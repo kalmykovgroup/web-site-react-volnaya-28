@@ -1,8 +1,4 @@
-﻿import { Navigate, useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import type {JSX} from "react";
-import {ROUTES} from "@app/constants/routes.ts";
-import {selectIsAuthenticated} from "@login/store/authSlice.ts";
+﻿import type {JSX} from "react";
 
 interface Props {
     children: JSX.Element
@@ -14,13 +10,6 @@ interface Props {
  * Используется для оборачивания защищённых маршрутов внутри AppRouter.
  */
 const ProtectedRoute = ({ children }: Props) => {
-    const isAuthenticated = useSelector(selectIsAuthenticated)
-    const location = useLocation()
-
-    if (!isAuthenticated) {
-        // Перенаправляем на страницу логина, сохраняя откуда пришли
-        return <Navigate to={ROUTES.LOGIN} replace state={{ from: location }} />
-    }
 
     return children
 }

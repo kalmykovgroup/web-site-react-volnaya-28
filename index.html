@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     
-    <!-- Favicon: SVG для современных браузеров, ICO для старых -->
+    <!-- Favicon: SVG для современных браузеров -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -50,8 +49,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="СтройХозМаг" />
     
-    <!-- DNS Prefetch -->
+    <!-- Resource Hints для оптимизации загрузки -->
+    <link rel="preconnect" href="https://volnaya-28.ru" />
     <link rel="dns-prefetch" href="https://volnaya-28.ru" />
+
+    <!-- Preload критических ресурсов -->
+    <link rel="modulepreload" href="/src/main.tsx" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">

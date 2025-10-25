@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { ImagePlaceholder } from './ImagePlaceholder';
 import styles from '../CategoryModal.module.css';
 import type {CategoryImage} from "@category/chared/contracts/CategoryImage.ts";
+import {LazyImage} from "@ui/components/LazyImage/LazyImage.tsx";
 
 interface ThumbnailsProps {
     images: CategoryImage[];
@@ -35,7 +36,7 @@ export const Thumbnails: React.FC<ThumbnailsProps> = ({
                         onClick={() => onThumbnailClick(index)}
                         className={`${styles.thumbnail} ${index === currentIndex ? styles.thumbnailActive : ''}`}
                     >
-                        <img
+                        <LazyImage
                             src={photo.url}
                             alt={photo.alt || `Миниатюра ${index + 1}`}
                             className={styles.thumbnailImage}

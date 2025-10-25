@@ -66,9 +66,8 @@ const generateHTML = (config) => `<!doctype html>
   <head>
     <meta charset="UTF-8" />
     
-    <!-- Favicon: SVG для современных браузеров, ICO для старых -->
+    <!-- Favicon: SVG для современных браузеров -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -113,8 +112,11 @@ const generateHTML = (config) => `<!doctype html>
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="apple-mobile-web-app-title" content="${config.company.name}" />
     
-    <!-- DNS Prefetch -->
-${config.api.dnsPrefetch.length > 0 ? config.api.dnsPrefetch.map(url => `    <link rel="dns-prefetch" href="${url}" />`).join('\n') : ''}
+    <!-- Resource Hints для оптимизации загрузки -->
+${config.api.dnsPrefetch.length > 0 ? config.api.dnsPrefetch.map(url => `    <link rel="preconnect" href="${url}" />\n    <link rel="dns-prefetch" href="${url}" />`).join('\n') : ''}
+
+    <!-- Preload критических ресурсов -->
+    <link rel="modulepreload" href="/src/main.tsx" />
     
     <!-- Structured Data -->
     <script type="application/ld+json">

@@ -3,8 +3,6 @@ import {configureStore} from '@reduxjs/toolkit';
 import {FLUSH, PAUSE, PERSIST, persistStore, REGISTER, REHYDRATE} from 'redux-persist';
 import {rootReducer} from './rootReducer';
 
-import {authApi} from '@login/shared/api/authApi';
-import {userApi} from "@/features/user/shared/api/userApi.ts";
 import {PURGE} from "redux-persist/es/constants";
 import {categoryApi} from "@/features/category/chared/api/categoryApi.ts";
 
@@ -18,8 +16,6 @@ export const store = configureStore({
                     ignoredPaths: ['category.categories'],
                 },
             }).concat(
-                authApi.middleware,
-                userApi.middleware,
                 categoryApi.middleware,
 
             ),

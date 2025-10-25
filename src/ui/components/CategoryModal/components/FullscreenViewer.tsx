@@ -6,6 +6,7 @@ import { ImagePlaceholder } from './ImagePlaceholder';
 import type { Position, DragHandlers } from '../types';
 import styles from '../CategoryModal.module.css';
 import type {CategoryImage} from "@category/chared/contracts/CategoryImage.ts";
+import {LazyImage} from "@ui/components/LazyImage/LazyImage.tsx";
 
 interface FullscreenViewerProps {
     image: CategoryImage;
@@ -82,7 +83,7 @@ export const FullscreenViewer: React.FC<FullscreenViewerProps> = ({
                 onClick={handleContainerClick}
                 style={{ cursor }}
             >
-                <img
+                <LazyImage
                     src={image.url}
                     alt={`Увеличенное изображение ${image.alt}`}
                     className={styles.fullscreenImage}

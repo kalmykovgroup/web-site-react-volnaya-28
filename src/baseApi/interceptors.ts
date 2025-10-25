@@ -1,18 +1,6 @@
 import type { AxiosInstance, AxiosError, InternalAxiosRequestConfig } from 'axios';
 import { AxiosHeaders } from 'axios';
 import toast from 'react-hot-toast';
-import { resetAuthState } from "@login/store/authSlice";
-import type {AppDispatch} from "@/store.ts";
-
-// Типизированная переменная вместо any
-let appStore: { dispatch: AppDispatch } | null = null;
-
-/**
- * Передача store в интерцепторы после его инициализации
- */
-export const setStoreForInterceptors = (store: { dispatch: AppDispatch }): void => {
-    appStore = store;
-};
 
 /**
  * Подключение промышленных интерцепторов
@@ -41,7 +29,6 @@ export const setupInterceptors = (client: AxiosInstance): void => {
 
             if (status === 401) {
                 // Теперь TypeScript знает точный тип dispatch
-                appStore?.dispatch(resetAuthState());
                 toast.error('Сессия истекла. Выполните вход.');
             } else if (status === 403) {
                 toast.error('Доступ запрещён.');

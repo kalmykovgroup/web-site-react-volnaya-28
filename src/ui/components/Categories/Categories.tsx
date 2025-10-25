@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import styles from './Categories.module.css';
 import { AnimatedSection } from "@ui/components/AnimatedSection/AnimatedSection.tsx";
-import { CategoryCard } from "@ui/components/Categories/CategoryCard/CategoryCard.tsx";
+import CategoryCard from "@ui/components/Categories/CategoryCard/CategoryCard.tsx";
 import { CategoryModal } from "@ui/components/CategoryModal";
 import { useAppDispatch, useAppSelector } from "@/hooks.ts";
 import {

@@ -3,6 +3,7 @@ import { NavigationButton } from './NavigationButton';
 import { ImagePlaceholder } from './ImagePlaceholder';
 import styles from '../CategoryModal.module.css';
 import type {CategoryImage} from "@category/chared/contracts/CategoryImage.ts";
+import {LazyImage} from "@ui/components/LazyImage/LazyImage.tsx";
 
 interface MainImageProps {
     image: CategoryImage;
@@ -31,7 +32,7 @@ export const MainImage: React.FC<MainImageProps> = ({
 
     return (
         <div className={styles.mainImage} key={imageIndex}>
-            <img
+            <LazyImage
                 src={image.url}
                 alt={image.alt || `Изображение категории ${imageIndex + 1}`}
                 className={styles.image}

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './CategoryCard.module.css';
 import classNames from "classnames";
 import type {CategoryDto} from "@category/chared/contracts/CategoryDto.ts";
+import {LazyImage} from "@ui/components/LazyImage/LazyImage.tsx";
 
 interface CategoryCardProps {
     category: CategoryDto;
@@ -11,7 +12,7 @@ interface CategoryCardProps {
 }
 
 
-export const CategoryCard: React.FC<CategoryCardProps> = ({
+const CategoryCard: React.FC<CategoryCardProps> = ({
                                                               category,
                                                               onClick,
                                                               index,
@@ -33,7 +34,7 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
             <div className={styles.cardContent}>
                 <div className={styles.cardContent_header}>
                     <div className={styles.iconWrapper}>
-                        <img
+                        <LazyImage
                             src={category.iconUrl}
                             alt={category.iconAlt}
                             className={styles.icon}
@@ -54,3 +55,4 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
         </div>
     );
 };
+export default CategoryCard

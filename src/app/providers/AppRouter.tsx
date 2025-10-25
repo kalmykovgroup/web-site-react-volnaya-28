@@ -7,7 +7,6 @@ import RouteLogger from "@app/providers/routing/RouteLogger.tsx";
 import PublicRoute from "@app/providers/routing/PublicRoute.tsx";
 
 // Lazy loading для оптимизации производительности
-const LoginPage = lazy(() => import("@/features/login/ui/Login/LoginPage.tsx"));
 const HomePage = lazy(() => import("@ui/pages/HomePage/HomePage.tsx").then(module => ({ default: module.HomePage })));
 const PageNotFound = lazy(() => import("@ui/pages/PageNotFound/PageNotFound.tsx"));
 const ErrorPage = lazy(() => import("@ui/pages/ErrorPage/ErrorPage.tsx"));
@@ -32,21 +31,6 @@ const AppRouter: React.FC = () => {
         <Suspense fallback={<PageLoader />}>
             <RouteLogger/>
             <Routes>
-                {/* Незащищённый маршрут логина */}
-
-
-                <Route
-                    path={ROUTES.LOGIN}
-                    element={
-                        /**
-                         * PublicRoute запрещает доступ к страницам (например, login), если пользователь уже авторизован.
-                         */
-                        <PublicRoute>
-                            <LoginPage />
-                        </PublicRoute>
-                    }
-                />
-
                 {/* Защищённые маршруты */}
 
                 <Route path={ROUTES.HOME} element={

@@ -6,10 +6,9 @@ import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
 import { PersistGate } from 'redux-persist/integration/react';
 import {apiClient} from "@/baseApi/apiClient.ts";
-import {setStoreForInterceptors, setupInterceptors} from "@/baseApi/interceptors.ts";
+import {setupInterceptors} from "@/baseApi/interceptors.ts";
 import {persistor, store} from "@/store.ts";
 // Передаём store в interceptors и настраиваем
-setStoreForInterceptors(store);
 setupInterceptors(apiClient);
 
 

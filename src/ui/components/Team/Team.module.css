@@ -1,0 +1,122 @@
+/* src/components/Team/Team.module.css */
+.team {
+    padding: 5rem 1.5rem;
+    background: linear-gradient(to bottom right, #f0fdf4, #ffffff);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.subtitle {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 4rem;
+    font-size: 1.125rem;
+}
+
+.grid {
+    display: grid;
+    gap: 15px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.card {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.avatar {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover .avatar {
+    transform: scale(1.05);
+}
+
+.initials {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.position {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #16a34a;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.positionIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.experience {
+    background: linear-gradient(to right, #f0fdf4, #fef9c3);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.experienceYears {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #15803d;
+    margin: 0;
+}
+
+.experienceLabel {
+    font-size: 0.875rem;
+    color: #4b5563;
+    margin: 0;
+}
+
+.description {
+    color: #4b5563;
+    line-height: 1.5;
+}

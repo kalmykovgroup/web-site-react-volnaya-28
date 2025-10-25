@@ -1,0 +1,21 @@
+﻿ .container{
+     display: flex;
+     flex-direction: column;
+     background: linear-gradient(to bottom right, #f9fafb, #ffffff, #f3f4f6);
+     min-height: 100vh;
+ }
+
+ .content{
+     z-index: 1;
+ }
+
+ .background {
+     position: absolute;
+     inset: 0;
+     z-index: 0;
+     background-image: url("https://i.imgur.com/aWymQv2.jpeg");
+     transition: opacity 2s ease-in-out;
+     background-repeat: no-repeat;
+     width: 100%;
+     background-size: contain;
+ }

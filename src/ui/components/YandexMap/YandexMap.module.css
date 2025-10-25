@@ -1,0 +1,140 @@
+/* src/components/YandexMap/YandexMap.module.css */
+.section {
+    padding: 5rem 1.5rem;
+    background: linear-gradient(to bottom right, #f9fafb, #ffffff);
+}
+
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.subtitle {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 3rem;
+    font-size: 1.125rem;
+}
+
+.mapContainer {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 768px) {
+    .mapContainer {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.mapWrapper {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    height: 400px;
+}
+
+.mapIframe {
+    display: block;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.infoCard {
+    background-color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    display: flex;
+    gap: 1rem;
+}
+
+.infoIcon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(to bottom right, #22c55e, #16a34a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: white;
+}
+
+.infoTitle {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.infoText {
+    color: #4b5563;
+    margin-bottom: 0.25rem;
+}
+
+.infoHours {
+    font-size: 0.875rem;
+    color: #16a34a;
+    font-weight: 500;
+}
+
+.routeButton {
+    background: linear-gradient(to right, #22c55e, #16a34a);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.routeButton:hover {
+    background: linear-gradient(to right, #16a34a, #15803d);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.buttonIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.mapLink {
+    text-align: center;
+    color: #16a34a;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.mapLink:hover {
+    color: #15803d;
+}

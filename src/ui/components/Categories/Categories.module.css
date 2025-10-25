@@ -1,0 +1,662 @@
+/* src/components/Categories/Categories.module.css */
+.categories {
+    position: relative;
+    width: 100%;
+}
+
+.title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #111827;
+}
+
+.subtitle {
+    text-align: center;
+    color: #4b5563;
+    margin-bottom: 4rem;
+    font-size: 1.125rem;
+}
+
+.gridWrapper {
+    position: relative;
+}
+
+/* Базовая сетка */
+.grid {
+    display: grid;
+    gap: 15px;
+    grid-auto-flow: dense;
+}
+
+.grid > * {
+    min-height: 120px;
+}
+
+/* ====================== */
+/* Мобильные - 4 колонки */
+/* ====================== */
+@media (max-width: 767px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 55px;
+        font-size: 15px;
+        gap: 10px;
+    }
+
+    /* 1-я карточка: широкая на всю ширину 4x2 */
+    .grid > *:nth-child(1) {
+        grid-column: 1 / span 4;
+        grid-row: 1 / span 2;
+    }
+
+    /* 2-я карточка: обычная 2x2 */
+    .grid > *:nth-child(2) {
+        grid-column: 1 / span 2;
+        grid-row: 3 / span 2;
+    }
+
+    /* 3-я карточка: обычная 2x2 */
+    .grid > *:nth-child(3) {
+        grid-column: 3 / span 2;
+        grid-row: 3 / span 2;
+    }
+
+    /* 4-я карточка: высокая 2x4 */
+    .grid > *:nth-child(4) {
+        grid-column: 1 / span 2;
+        grid-row: 5 / span 4;
+    }
+
+    /* 5-я карточка: обычная 2x2 */
+    .grid > *:nth-child(5) {
+        grid-column: 3 / span 2;
+        grid-row: 5 / span 2;
+    }
+
+    /* 6-я карточка: обычная 2x2 */
+    .grid > *:nth-child(6) {
+        grid-column: 3 / span 2;
+        grid-row: 7 / span 2;
+    }
+
+    /* 7-я карточка: широкая на всю ширину 4x2 */
+    .grid > *:nth-child(7) {
+        grid-column: 1 / span 4;
+        grid-row: 9 / span 2;
+    }
+
+    /* 8-я карточка: обычная 2x2 */
+    .grid > *:nth-child(8) {
+        grid-column: 1 / span 2;
+        grid-row: 11 / span 2;
+    }
+
+    /* 9-я карточка: обычная 2x2 */
+    .grid > *:nth-child(9) {
+        grid-column: 3 / span 2;
+        grid-row: 11 / span 4;
+    }
+
+    /* 10-я карточка: обычная 2x2 */
+    .grid > *:nth-child(10) {
+        grid-column: 1 / span 2;
+        grid-row: 13 / span 2;
+    }
+
+    /* 11-я карточка: широкая на всю ширину 4x2 */
+    .grid > *:nth-child(11) {
+        grid-column: 1 / span 4;
+        grid-row: 15 / span 2;
+    }
+
+    /* 12-я карточка: обычная 2x2 */
+    .grid > *:nth-child(12) {
+        grid-column: 1 / span 2;
+        grid-row: 17 / span 2;
+    }
+
+    /* 13-я карточка: обычная 2x2 */
+    .grid > *:nth-child(13) {
+        grid-column: 3 / span 2;
+        grid-row: 17 / span 2;
+    }
+
+    .grid > * {
+        min-width: 100px;
+    }
+}
+
+/* ====================== */
+/* Планшеты - 16 колонок (768-1023px) */
+/* ====================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .grid {
+        grid-template-columns: repeat(16, 1fr);
+        grid-auto-rows: 37.5px;
+    }
+
+    /* 1-я карточка: большая 8x8 */
+    .grid > *:nth-child(1) {
+        grid-column: 1 / span 8;
+        grid-row: 1 / span 8;
+    }
+
+    /* 2-я карточка: обычная 4x4 */
+    .grid > *:nth-child(2) {
+        grid-column: 9 / span 4;
+        grid-row: 1 / span 4;
+    }
+
+    /* 3-я карточка: высокая 4x8 */
+    .grid > *:nth-child(3) {
+        grid-column: 13 / span 4;
+        grid-row: 1 / span 8;
+    }
+
+    /* 4-я карточка: обычная 4x4 */
+    .grid > *:nth-child(4) {
+        grid-column: 9 / span 4;
+        grid-row: 5 / span 4;
+    }
+
+    /* 5-я карточка: широкая 8x4 */
+    .grid > *:nth-child(5) {
+        grid-column: 1 / span 8;
+        grid-row: 9 / span 4;
+    }
+
+    /* 6-я карточка: обычная 4x4 */
+    .grid > *:nth-child(6) {
+        grid-column: 9 / span 4;
+        grid-row: 9 / span 4;
+    }
+
+    /* 7-я карточка: высокая 4x8 */
+    .grid > *:nth-child(7) {
+        grid-column: 13 / span 4;
+        grid-row: 9 / span 8;
+    }
+
+    /* 8-я карточка: обычная 4x4 */
+    .grid > *:nth-child(8) {
+        grid-column: 1 / span 4;
+        grid-row: 13 / span 4;
+    }
+
+    /* 9-я карточка: широкая 8x4 */
+    .grid > *:nth-child(9) {
+        grid-column: 5 / span 8;
+        grid-row: 13 / span 4;
+    }
+
+    /* 10-я карточка: большая 8x8 */
+    .grid > *:nth-child(10) {
+        grid-column: 1 / span 8;
+        grid-row: 17 / span 8;
+    }
+
+    /* 11-я карточка: обычная 4x4 */
+    .grid > *:nth-child(11) {
+        grid-column: 9 / span 4;
+        grid-row: 17 / span 4;
+    }
+
+    /* 12-я карточка: обычная 4x4 */
+    .grid > *:nth-child(12) {
+        grid-column: 13 / span 4;
+        grid-row: 17 / span 4;
+    }
+
+    /* 13-я карточка: широкая 8x4 */
+    .grid > *:nth-child(13) {
+        grid-column: 9 / span 8;
+        grid-row: 21 / span 4;
+    }
+
+    .grid > * {
+        min-width: 180px;
+    }
+}
+
+/* ====================== */
+/* Десктоп - 16 колонок (1024-1439px) */
+/* ====================== */
+@media (min-width: 1024px) and (max-width: 1439px) {
+    .grid {
+        grid-template-columns: repeat(16, 1fr);
+        grid-auto-rows: 40px;
+    }
+
+    /* 1-я карточка: большая 6x6 */
+    .grid > *:nth-child(1) {
+        grid-column: 1 / span 6;
+        grid-row: 1 / span 6;
+    }
+
+    /* 2-я карточка: средняя 5x6 */
+    .grid > *:nth-child(2) {
+        grid-column: 7 / span 5;
+        grid-row: 1 / span 6;
+    }
+
+    /* 3-я карточка: широкая 4x3 */
+    .grid > *:nth-child(3) {
+        grid-column: 12 / span 5;
+        grid-row: 1 / span 3;
+    }
+
+    /* 4-я карточка: обычная 5x3 */
+    .grid > *:nth-child(4) {
+        grid-column: 12 / span 5;
+        grid-row: 4 / span 3;
+    }
+
+    /* 5-я карточка: обычная 4x4 */
+    .grid > *:nth-child(5) {
+        grid-column: 1 / span 4;
+        grid-row: 7 / span 4;
+    }
+
+    /* 6-я карточка: обычная 4x4 */
+    .grid > *:nth-child(6) {
+        grid-column: 5 / span 4;
+        grid-row: 7 / span 4;
+    }
+
+    /* 7-я карточка: высокая 4x5 */
+    .grid > *:nth-child(7) {
+        grid-column: 9 / span 4;
+        grid-row: 7 / span 5;
+    }
+
+    /* 8-я карточка: высокая 4x5 */
+    .grid > *:nth-child(8) {
+        grid-column: 13 / span 4;
+        grid-row: 7 / span 5;
+    }
+
+    /* 9-я карточка: широкая 8x3 */
+    .grid > *:nth-child(9) {
+        grid-column: 1 / span 8;
+        grid-row: 11 / span 3;
+    }
+
+    /* 10-я карточка: обычная 4x4 */
+    .grid > *:nth-child(10) {
+        grid-column: 9 / span 4;
+        grid-row: 12 / span 4;
+    }
+
+    /* 11-я карточка: обычная 4x4 */
+    .grid > *:nth-child(11) {
+        grid-column: 13 / span 4;
+        grid-row: 12 / span 4;
+    }
+
+    /* 12-я карточка: широкая 8x3 */
+    .grid > *:nth-child(12) {
+        grid-column: 1 / span 8;
+        grid-row: 14 / span 3;
+    }
+
+    /* 13-я карточка: широкая 8x3 */
+    .grid > *:nth-child(13) {
+        grid-column: 9 / span 8;
+        grid-row: 16 / span 3;
+    }
+
+    .grid > * {
+        min-width: 220px;
+    }
+}
+
+/* ====================== */
+/* Большие экраны - 32 колонки (1440px+) */
+/* ====================== */
+@media (min-width: 1440px) {
+    .grid {
+        grid-template-columns: repeat(32, 1fr);
+        grid-auto-rows: 35px;
+    }
+
+    /* 1-я карточка: очень большая 12x10 */
+    .grid > *:nth-child(1) {
+        grid-column: 1 / span 12;
+        grid-row: 1 / span 10;
+    }
+
+    /* 2-я карточка: большая 8x6 */
+    .grid > *:nth-child(2) {
+        grid-column: 13 / span 8;
+        grid-row: 1 / span 6;
+    }
+
+    /* 3-я карточка: высокая 4x6 */
+    .grid > *:nth-child(3) {
+        grid-column: 21 / span 4;
+        grid-row: 1 / span 6;
+    }
+
+    /* 4-я карточка: широкая 8x3 */
+    .grid > *:nth-child(4) {
+        grid-column: 25 / span 8;
+        grid-row: 1 / span 3;
+    }
+
+    /* 5-я карточка: обычная 4x3 */
+    .grid > *:nth-child(5) {
+        grid-column: 25 / span 4;
+        grid-row: 4 / span 3;
+    }
+
+    /* 6-я карточка: обычная 4x3 */
+    .grid > *:nth-child(6) {
+        grid-column: 29 / span 4;
+        grid-row: 4 / span 3;
+    }
+
+    /* 7-я карточка: широкая 12x4 */
+    .grid > *:nth-child(7) {
+        grid-column: 13 / span 12;
+        grid-row: 7 / span 4;
+    }
+
+    /* 8-я карточка: высокая 4x5 */
+    .grid > *:nth-child(8) {
+        grid-column: 25 / span 4;
+        grid-row: 7 / span 5;
+    }
+
+    /* 9-я карточка: высокая 4x5 */
+    .grid > *:nth-child(9) {
+        grid-column: 29 / span 4;
+        grid-row: 7 / span 5;
+    }
+
+    /* 10-я карточка: большая 8x4 */
+    .grid > *:nth-child(10) {
+        grid-column: 1 / span 8;
+        grid-row: 11 / span 4;
+    }
+
+    /* 11-я карточка: широкая 8x4 */
+    .grid > *:nth-child(11) {
+        grid-column: 9 / span 8;
+        grid-row: 11 / span 4;
+    }
+
+    /* 12-я карточка: широкая 8x4 */
+    .grid > *:nth-child(12) {
+        grid-column: 17 / span 8;
+        grid-row: 11 / span 4;
+    }
+
+    /* 13-я карточка: широкая 8x3 */
+    .grid > *:nth-child(13) {
+        grid-column: 25 / span 8;
+        grid-row: 12 / span 3;
+    }
+
+    .grid > * {
+        min-width: 220px;
+    }
+
+    .categories {
+        padding: 50px;
+    }
+}
+
+/* Остальные стили */
+.skeleton {
+    background: linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-radius: 0.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    min-height: 140px;
+}
+
+.skeletonStatic {
+    opacity: 0.6;
+}
+
+.skeletonImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            90deg,
+            rgba(255,255,255,0.05) 0%,
+            rgba(255,255,255,0.1) 50%,
+            rgba(255,255,255,0.05) 100%
+    );
+    animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeletonContent {
+    position: relative;
+    z-index: 1;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.skeletonTitle {
+    width: 60%;
+    height: 18px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 0.25rem;
+    margin-bottom: 8px;
+    animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeletonDesc {
+    width: 80%;
+    height: 12px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 0.25rem;
+    animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.skeletonStatic .skeletonImage,
+.skeletonStatic .skeletonTitle,
+.skeletonStatic .skeletonDesc {
+    animation: none;
+}
+
+@keyframes skeletonPulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
+
+.errorOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 2rem;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.errorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px -10px rgba(239, 68, 68, 0.3);
+    animation: fadeIn 0.3s ease-out;
+    pointer-events: auto;
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.errorIcon {
+    color: #dc2626;
+    margin-bottom: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.errorTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #111827;
+    margin: 0 0 0.75rem 0;
+}
+
+.errorMessage {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0 0 2rem 0;
+    max-width: 500px;
+}
+
+.errorActions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.retryButton {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: #dc2626;
+    border: 1px solid #dc2626;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.retryButton:hover {
+    background: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.15),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.retryButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+}
+
+.retryInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.autoRetryText {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+}
+
+.maxAttemptsText {
+    font-size: 0.875rem;
+    color: #dc2626;
+    margin: 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.progressBar {
+    width: 100%;
+    height: 4px;
+    background-color: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+    transition: width 1s linear;
+    border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+    .categories {
+        padding: 5px;
+    }
+
+    .errorContainer {
+        padding: 2.5rem 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .errorTitle {
+        font-size: 1.25rem;
+    }
+
+    .errorMessage {
+        font-size: 0.875rem;
+    }
+
+    .retryButton {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .title {
+        font-size: 1.875rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 3rem;
+    }
+}

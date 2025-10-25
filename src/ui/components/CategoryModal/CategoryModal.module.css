@@ -1,0 +1,670 @@
+/* CategoryModal.module.css */
+
+/* Основное модальное окно */
+.modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 50;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 1rem;
+    overflow-y: auto;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+@media (min-width: 768px) {
+    .modal {
+        padding: 2rem;
+    }
+}
+
+.content {
+    background-color: white;
+    border-radius: 1rem;
+    max-width: 80rem;
+    width: 100%;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    margin: 2rem 0;
+    animation: slideUp 0.3s ease-out;
+}
+
+/* Заголовок */
+.header {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 1rem 1rem 0 0;
+}
+
+@media (min-width: 768px) {
+    .header {
+        padding: 1.5rem;
+    }
+}
+
+.headerContent {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .icon {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+.iconSvg {
+    width: 50px;
+    height: 50px;
+    color: white;
+}
+
+@media (min-width: 768px) {
+    .iconSvg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .title {
+        font-size: 1.5rem;
+    }
+}
+
+.subtitle {
+    color: #4b5563;
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .subtitle {
+        font-size: 0.875rem;
+    }
+}
+
+.closeButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.closeButton:hover {
+    background-color: #f3f4f6;
+}
+
+.closeIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #4b5563;
+}
+
+/* Тело модального окна */
+.body {
+    padding: 1rem;
+}
+
+@media (min-width: 768px) {
+    .body {
+        padding: 1.5rem;
+    }
+}
+
+/* Слайдер */
+.sliderContainer {
+    position: relative;
+}
+
+.mainImage {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background-color: #f3f4f6;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .mainImage {
+        height: 500px;
+    }
+}
+
+.image {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+    transition: transform 0.2s;
+}
+
+.image:hover {
+    transform: scale(1.02);
+}
+
+.imagePlaceholder {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.placeholderIcon {
+    width: 6rem;
+    height: 6rem;
+    color: #d1d5db;
+}
+
+@media (min-width: 768px) {
+    .placeholderIcon {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+.showPlaceholder .imagePlaceholder,
+.showPlaceholder .thumbnailPlaceholder {
+    opacity: 1;
+}
+
+/* Кнопки навигации */
+.navButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+@media (min-width: 768px) {
+    .navButton {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+.navButton:hover {
+    background-color: white;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.navButtonLeft {
+    left: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .navButtonLeft {
+        left: 1rem;
+    }
+}
+
+.navButtonRight {
+    right: 0.75rem;
+}
+
+@media (min-width: 768px) {
+    .navButtonRight {
+        right: 1rem;
+    }
+}
+
+.navIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #111827;
+}
+
+@media (min-width: 768px) {
+    .navIcon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+/* Счетчик */
+.counter {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Миниатюры */
+.thumbnails {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.thumbnail {
+    position: relative;
+    flex-shrink: 0;
+    width: 6rem;
+    height: 4rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    border: 2px solid #e5e7eb;
+    background-color: #f3f4f6;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .thumbnail {
+        width: 8rem;
+        height: 5rem;
+    }
+}
+
+.thumbnail:hover {
+    border-color: #9ca3af;
+}
+
+.thumbnailActive {
+    border-color: #22c55e;
+    transform: scale(1.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.thumbnailImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: zoom-in;
+}
+
+.thumbnailPlaceholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.thumbnailPlaceholderIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #d1d5db;
+}
+
+@media (min-width: 768px) {
+    .thumbnailPlaceholderIcon {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+/* Полноэкранный просмотр */
+.fullscreenModal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.fullscreenClose {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 71;
+}
+
+@media (min-width: 768px) {
+    .fullscreenClose {
+        top: 2rem;
+        right: 2rem;
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+}
+
+.fullscreenClose:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+.fullscreenCloseIcon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #111827;
+}
+
+@media (min-width: 768px) {
+    .fullscreenCloseIcon {
+        width: 2rem;
+        height: 2rem;
+    }
+}
+
+.fullscreenImageContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.fullscreenImage {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    user-select: none;
+    animation: scaleIn 0.3s ease-out;
+}
+
+.fullscreenPlaceholder {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 16rem;
+    height: 16rem;
+    border-radius: 0.5rem;
+    background-color: #1f2937;
+}
+
+@media (min-width: 768px) {
+    .fullscreenPlaceholder {
+        width: 24rem;
+        height: 24rem;
+    }
+}
+
+.fullscreenPlaceholderIcon {
+    width: 6rem;
+    height: 6rem;
+    color: #6b7280;
+}
+
+@media (min-width: 768px) {
+    .fullscreenPlaceholderIcon {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+/* Кнопки зума */
+.zoomControls {
+    position: fixed;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 71;
+}
+
+@media (min-width: 768px) {
+    .zoomControls {
+        left: 2rem;
+    }
+}
+
+.zoomButton {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+@media (min-width: 768px) {
+    .zoomButton {
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+.zoomButton:hover:not(:disabled) {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+.zoomButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.zoomIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #111827;
+}
+
+@media (min-width: 768px) {
+    .zoomIcon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+}
+
+/* Навигация в полноэкранном режиме */
+.fullscreenNav {
+    position: fixed;
+    right: 1rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 71;
+}
+
+@media (min-width: 768px) {
+    .fullscreenNav {
+        right: 2rem;
+        width: 3rem;
+        height: 3rem;
+    }
+}
+
+.fullscreenNav:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+.fullscreenNavPrev {
+    top: calc(50% - 3.75rem);
+}
+
+.fullscreenNavNext {
+    top: calc(50% + 0.625rem);
+}
+
+.fullscreenNavIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #111827;
+}
+
+@media (min-width: 768px) {
+    .fullscreenNavIcon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+}
+
+/* Информация внизу */
+.fullscreenInfo {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 71;
+}
+
+@media (min-width: 768px) {
+    .fullscreenInfo {
+        bottom: 2rem;
+    }
+}
+
+.fullscreenCounter {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #111827;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .fullscreenCounter {
+        padding: 0.75rem 1.5rem;
+        font-size: 1.125rem;
+    }
+}
+
+.fullscreenScale {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #111827;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+    .fullscreenScale {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Цвета категорий */
+.colorBlue { background-color: #3b82f6; }
+.colorYellow { background-color: #eab308; }
+.colorGreen { background-color: #22c55e; }
+.colorOrange { background-color: #f97316; }
+.colorPurple { background-color: #a855f7; }
+.colorCyan { background-color: #06b6d4; }
+.colorIndigo { background-color: #6366f1; }
+.colorGreenDark { background-color: #16a34a; }
+.colorRed { background-color: #ef4444; }
+.colorPink { background-color: #ec4899; }
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

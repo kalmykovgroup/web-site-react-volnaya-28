@@ -32,6 +32,10 @@ export default defineConfig(({mode}) => {
             server: {
                 port: 5173,
                 strictPort: true,
+                headers: {
+                    // CSP для dev режима: разрешаем Vite HMR + Yandex Maps + Yandex Metrika
+                    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://yandex.ru https://api-maps.yandex.ru https://mc.yandex.ru https://mc.yandex.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: https://mc.yandex.ru https://mc.yandex.com; font-src 'self' data: https:; connect-src 'self' ws: wss: https: wss://mc.yandex.com https://mc.yandex.ru https://mc.yandex.com; frame-src https://yandex.ru https://api-maps.yandex.ru https://mc.yandex.com;",
+                },
                 proxy: {
                     '/images': {
                         target: env.VITE_API_URL,
@@ -85,12 +89,26 @@ export default defineConfig(({mode}) => {
         build: {
             outDir: 'dist',
             assetsDir: 'assets',
-            minify: 'esbuild', // В rolldown-vite лучше использовать esbuild
+            minify: 'esbuild',
             sourcemap: false,
             chunkSizeWarningLimit: 1000,
             target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
             cssCodeSplit: true,
             cssMinify: true,
+            rollupOptions: {
+                output: {
+                    manualChunks(id) {
+                        if (id.includes('node_modules')) {
+                            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+                                return 'react-vendor';
+                            }
+                            if (id.includes('@reduxjs/toolkit') || id.includes('react-redux')) {
+                                return 'redux-vendor';
+                            }
+                        }
+                    },
+                },
+            },
         },
         optimizeDeps: {
             include: [

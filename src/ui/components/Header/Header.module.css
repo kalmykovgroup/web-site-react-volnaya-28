@@ -5,7 +5,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
     z-index: 50;
     backdrop-filter: blur(12px);
     background-color: rgba(255, 255, 255, 0.95);
@@ -59,26 +59,6 @@
     color: white;
 }
 
-.logoTextTop {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111827;
-    line-height: 1.1;
-    margin: 0;
-    display: block;
-}
-
-.logoTextBottom {
-    font-size: 1rem;
-    font-weight: 700;
-    background: linear-gradient(to right, #facc15, #eab308);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    line-height: 1.1;
-    margin: 0;
-    display: block;
-}
 
 /* Hamburger Button - только для мобильных */
 .hamburger {
@@ -261,11 +241,6 @@
         height: 1.375rem;
     }
 
-    .logoTextTop,
-    .logoTextBottom {
-        font-size: 1.0625rem;
-    }
-
     .nav {
         gap: 1.5rem;
     }
@@ -293,11 +268,6 @@
         height: 1.5rem;
     }
 
-    .logoTextTop,
-    .logoTextBottom {
-        font-size: 1.125rem;
-        line-height: 1.2;
-    }
 
     /* Скрываем гамбургер на планшетах и десктопах */
     .hamburger {
@@ -365,10 +335,6 @@
         margin-right: 0.5rem;
     }
 
-    .logoTextTop,
-    .logoTextBottom {
-        font-size: 1.25rem;
-    }
 
     .nav {
         gap: 1.5rem;
@@ -504,9 +470,6 @@
         box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
     }
 
-    .logoTextTop {
-        color: #f9fafb;
-    }
 
     .hamburgerLine {
         background-color: #f9fafb;

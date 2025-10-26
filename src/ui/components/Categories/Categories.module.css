@@ -2,6 +2,7 @@
 .categories {
     position: relative;
     width: 100%;
+    padding: 20px;
 }
 
 .title {
@@ -628,7 +629,7 @@
 
 @media (max-width: 768px) {
     .categories {
-        padding: 5px;
+        padding: 10px;
     }
 
     .errorContainer {

@@ -3,13 +3,12 @@
 import React, { lazy, Suspense } from "react";
 import MainLayout from "@ui/layouts/MainLayout/MainLayout.tsx";
 import {ROUTES} from "@app/constants/routes.ts";
-import RouteLogger from "@app/providers/routing/RouteLogger.tsx";
 import PublicRoute from "@app/providers/routing/PublicRoute.tsx";
+import ErrorPage from "@ui/pages/ErrorPage/ErrorPage.tsx";
 
 // Lazy loading для оптимизации производительности
 const HomePage = lazy(() => import("@ui/pages/HomePage/HomePage.tsx").then(module => ({ default: module.HomePage })));
 const PageNotFound = lazy(() => import("@ui/pages/PageNotFound/PageNotFound.tsx"));
-const ErrorPage = lazy(() => import("@ui/pages/ErrorPage/ErrorPage.tsx"));
 
 // Компонент загрузки для Suspense
 const PageLoader = () => (
@@ -29,10 +28,8 @@ const AppRouter: React.FC = () => {
 
     return (
         <Suspense fallback={<PageLoader />}>
-            <RouteLogger/>
-            <Routes>
-                {/* Защищённые маршруты */}
 
+            <Routes>
                 <Route path={ROUTES.HOME} element={
 
                     /**

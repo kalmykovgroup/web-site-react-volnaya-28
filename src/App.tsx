@@ -1,6 +1,7 @@
-import {Component, lazy, Suspense} from 'react'
+import {Component} from 'react'
 import {ThemeProvider} from "@app/providers/theme/ThemeProvider.tsx";
 import ErrorBoundary from "@app/lib/hooks/ErrorBoundary.tsx";
+import ErrorPage from "@ui/pages/ErrorPage/ErrorPage.tsx";
 import {NavigateProvider} from "@app/providers/routing/NavigateProvider.tsx";
 import {DeviceProvider} from "@app/lib/hooks/device/DeviceProvider.tsx";
 import AppRouter from "@app/providers/AppRouter.tsx";
@@ -8,9 +9,7 @@ import {ConfirmProvider} from "@ui/components/app/ConfirmProvider/ConfirmProvide
 import {AppToaster} from "@ui/components/app/AppToaster/AppToaster.tsx";
 import LoadingOverlay from "@ui/components/app/LoadingOverlay/LoadingOverlay.tsx";
 import {DocumentTitleProvider} from "@app/lib/hooks/DocumentTitleContext.tsx";
-
-// Lazy load ErrorPage для улучшения code splitting
-const ErrorPage = lazy(() => import("@ui/pages/ErrorPage/ErrorPage.tsx"));
+import {YandexMetrikaProvider} from "@app/providers/YandexMetrikaProvider.tsx";
 
 /**
  * Главный компонент приложения.
@@ -33,19 +32,17 @@ class App extends Component {
         return (
             <DocumentTitleProvider>
             <ThemeProvider>
-                <ErrorBoundary fallback={
-                    <Suspense fallback={<div>Loading...</div>}>
-                        <ErrorPage/>
-                    </Suspense>
-                }>
-                    <NavigateProvider />
-                    <DeviceProvider>
-                        <ConfirmProvider>
-                            <AppRouter/>
-                            <AppToaster/>
-                            <LoadingOverlay />
-                        </ConfirmProvider>
-                    </DeviceProvider>
+                <ErrorBoundary fallback={<ErrorPage/>}>
+                    <YandexMetrikaProvider>
+                        <NavigateProvider />
+                        <DeviceProvider>
+                            <ConfirmProvider>
+                                <AppRouter/>
+                                <AppToaster/>
+                                <LoadingOverlay />
+                            </ConfirmProvider>
+                        </DeviceProvider>
+                    </YandexMetrikaProvider>
                 </ErrorBoundary>
             </ThemeProvider>
             </DocumentTitleProvider>

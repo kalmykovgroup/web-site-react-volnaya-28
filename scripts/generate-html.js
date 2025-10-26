@@ -65,25 +65,28 @@ const generateHTML = (config) => `<!doctype html>
 <html lang="${config.site.lang}">
   <head>
     <meta charset="UTF-8" />
-    
+
+    <!-- CSP для разработки: разрешаем unsafe-eval для Vite HMR + Yandex Maps + Yandex Metrika -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://yandex.ru https://api-maps.yandex.ru https://mc.yandex.ru https://mc.yandex.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https: https://mc.yandex.ru https://mc.yandex.com; font-src 'self' data: https:; connect-src 'self' ws: wss: https: wss://mc.yandex.com https://mc.yandex.ru https://mc.yandex.com; frame-src https://yandex.ru https://api-maps.yandex.ru https://mc.yandex.com;">
+
     <!-- Favicon: SVG для современных браузеров -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
+
     <!-- Apple Touch Icon -->
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    
+
     <!-- Web App Manifest -->
     <link rel="manifest" href="/manifest.json" />
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    
+
     <!-- SEO Meta Tags -->
     <meta name="description" content="${config.site.description}" />
     <meta name="keywords" content="${config.site.keywords}" />
     <meta name="author" content="${config.site.author}" />
     <meta name="geo.region" content="RU-MOW" />
     <meta name="geo.placename" content="${config.company.city}" />
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="${config.social.ogType}" />
     <meta property="og:url" content="${config.site.url}/" />
@@ -94,13 +97,13 @@ const generateHTML = (config) => `<!doctype html>
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="${config.site.locale}" />
-    
+
     <!-- Twitter -->
     <meta name="twitter:card" content="${config.social.twitterCard}" />
     <meta name="twitter:title" content="${config.site.title}" />
     <meta name="twitter:description" content="${config.site.description}" />
     <meta name="twitter:image" content="${config.site.url}/og-image.png" />
-    
+
     <!-- Security -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -115,9 +118,12 @@ const generateHTML = (config) => `<!doctype html>
     <!-- Resource Hints для оптимизации загрузки -->
 ${config.api.dnsPrefetch.length > 0 ? config.api.dnsPrefetch.map(url => `    <link rel="preconnect" href="${url}" />\n    <link rel="dns-prefetch" href="${url}" />`).join('\n') : ''}
 
-    <!-- Preload критических ресурсов -->
-    <link rel="modulepreload" href="/src/main.tsx" />
-    
+    <!-- Preconnect для Yandex Maps -->
+    <link rel="preconnect" href="https://yandex.ru" crossorigin />
+    <link rel="preconnect" href="https://api-maps.yandex.ru" crossorigin />
+    <link rel="dns-prefetch" href="https://yandex.ru" />
+    <link rel="dns-prefetch" href="https://api-maps.yandex.ru" />
+
     <!-- Structured Data -->
     <script type="application/ld+json">
       ${JSON.stringify(structuredData, null, 2)}
@@ -128,8 +134,28 @@ ${config.api.dnsPrefetch.length > 0 ? config.api.dnsPrefetch.map(url => `    <li
     </script>
     
     <title>${config.site.title}</title>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+      ym(104853379, 'init', {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true,
+        ecommerce:"dataLayer"
+      });
+    </script>
+    <!-- /Yandex.Metrika counter -->
   </head>
   <body>
+    <noscript><div><img src="https://mc.yandex.ru/watch/104853379" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <noscript>
       <div style="padding: 20px; text-align: center; font-family: sans-serif;">
         <h1>JavaScript Required</h1>

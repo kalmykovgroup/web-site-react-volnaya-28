@@ -128,10 +128,6 @@ export const Header: React.FC<HeaderProps> = ({
                         <div className={styles.logoIcon}>
                             <Logo onTopClick={onTopClick} />
                         </div>
-                        <div>
-                            <h1 className={styles.logoTextTop}>СТРОЙ</h1>
-                            <h1 className={styles.logoTextBottom}>ХОЗМАГ</h1>
-                        </div>
                     </div>
 
                     {/* Hamburger Button - только для мобильных < 768px */}

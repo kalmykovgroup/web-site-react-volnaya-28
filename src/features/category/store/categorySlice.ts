@@ -71,7 +71,6 @@ const categorySlice = createSlice({
             .addCase(fetchAllCategories.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload ?? 'Неизвестная ошибка';
-                console.error("тест слайс ошибка фетч");
             });
     },
 });

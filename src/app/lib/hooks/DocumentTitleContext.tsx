@@ -27,7 +27,7 @@ export function DocumentTitleProvider({ children }: { readonly children: ReactNo
 
     useEffect(() => {
         if (titles.size === 0) {
-            document.title = 'Графики'; // Дефолтный title
+            document.title = 'СтройХозМаг'; // Дефолтный title
             return;
         }
 

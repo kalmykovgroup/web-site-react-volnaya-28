@@ -56,8 +56,6 @@ export const HomePage: React.FC = () => {
     };
 
 
-
-
     return (
         <>
             <Header

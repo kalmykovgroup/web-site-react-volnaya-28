@@ -1,6 +1,7 @@
 import {defineConfig, loadEnv} from 'vite';
 import react from '@vitejs/plugin-react';
 import MakeCert from 'vite-plugin-mkcert';
+import {VitePWA} from 'vite-plugin-pwa';
 import * as path from 'node:path';
 
 export default defineConfig(({mode}) => {
@@ -23,10 +24,81 @@ export default defineConfig(({mode}) => {
         '@scenario': path.resolve(__dirname, './src/features/scenarioEditor'),
     };
 
+    // PWA Configuration
+    const pwaConfig = VitePWA({
+        registerType: 'autoUpdate',
+        includeAssets: ['favicon.svg', 'favicon-96x96.png', 'apple-touch-icon.png', 'logo.svg', 'og-image.png'],
+        manifest: false, // Используем существующий manifest.json
+        workbox: {
+            globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg,webp}'],
+            runtimeCaching: [
+                {
+                    urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+                    handler: 'CacheFirst',
+                    options: {
+                        cacheName: 'google-fonts-cache',
+                        expiration: {
+                            maxEntries: 10,
+                            maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
+                        },
+                        cacheableResponse: {
+                            statuses: [0, 200]
+                        }
+                    }
+                },
+                {
+                    urlPattern: /^https:\/\/api-maps\.yandex\.ru\/.*/i,
+                    handler: 'NetworkFirst',
+                    options: {
+                        cacheName: 'yandex-maps-cache',
+                        expiration: {
+                            maxEntries: 50,
+                            maxAgeSeconds: 60 * 60 * 24 * 7 // 1 week
+                        }
+                    }
+                },
+                {
+                    urlPattern: ({url}) => url.pathname.startsWith('/api/'),
+                    handler: 'NetworkFirst',
+                    options: {
+                        cacheName: 'api-cache',
+                        networkTimeoutSeconds: 10,
+                        expiration: {
+                            maxEntries: 100,
+                            maxAgeSeconds: 60 * 60 // 1 hour
+                        },
+                        cacheableResponse: {
+                            statuses: [0, 200]
+                        }
+                    }
+                },
+                {
+                    urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/,
+                    handler: 'CacheFirst',
+                    options: {
+                        cacheName: 'images-cache',
+                        expiration: {
+                            maxEntries: 100,
+                            maxAgeSeconds: 60 * 60 * 24 * 30 // 30 days
+                        }
+                    }
+                }
+            ],
+            cleanupOutdatedCaches: true,
+            skipWaiting: true,
+            clientsClaim: true
+        },
+        devOptions: {
+            enabled: true,
+            type: 'module',
+            navigateFallback: 'index.html'
+        }
+    });
+
     // DEV конфигурация
     if (isDev) {
         return {
-            plugins: [react(), MakeCert()],
+            plugins: [react(), MakeCert(), pwaConfig],
             base: '/',
             resolve: {alias: aliases},
             server: {
@@ -79,7 +151,7 @@ export default defineConfig(({mode}) => {
 
     // PROD конфигурация
     return {
-        plugins: [react()],
+        plugins: [react(), pwaConfig],
         base: '/',
         resolve: {alias: aliases},
         server: {

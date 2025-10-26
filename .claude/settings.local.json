@@ -4,7 +4,8 @@
       "Bash(netstat:*)",
       "Bash(findstr:*)",
       "Bash(taskkill //F //PID 28640)",
-      "Read(//c/Users/Apolon 1/source/repos/WebSite/nginx/conf.d/**)"
+      "Read(//c/Users/Apolon 1/source/repos/WebSite/nginx/conf.d/**)",
+      "Read(//c/Users/Apolon 1/source/repos/WebSite/**)"
     ],
     "deny": [],
     "ask": []
